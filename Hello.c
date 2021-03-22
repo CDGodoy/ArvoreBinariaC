@@ -24,6 +24,7 @@ int main(){
         }
     }else{
         printf("Erro ao abrir arquivo");
+        return(0);
     }
 
     do{
