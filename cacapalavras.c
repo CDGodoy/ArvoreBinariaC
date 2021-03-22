@@ -37,14 +37,14 @@ int main(){
  
     FILE *arq;
     FILE *uarq;
-    //FILE *tarq;
+    FILE *tarq;
     int i, j, k, tam, tam1;
     char palavras[nlinhas][MAX];
     char buffer[nlinhas][MAX];
     char *resul;
     char dicpalavra[MAX];
 
-    //tarq = fopen("meutexto.txt", "a+b");
+    tarq = fopen("meutexto.txt", "w");
     uarq = fopen(pesq, "r");
     arq = fopen("dic.txt", "r");
 
@@ -53,7 +53,8 @@ int main(){
         tam = strlen(dicpalavra);
         for (i=0; i<tam; i++){ //Convertendo palavras do dic em CapsLock
             dicpalavra[i] = toupper(dicpalavra[i]); 
-        } 
+        }
+        fputs(dicpalavra, tarq); //Escrevendo em outro arquivo com tudo em maiúsculo
     }
         //     for(i=0;i<nlinhas;i++){ //Mostra todas as palavras do arquivo
         //     resul = fgets(*buffer,MAX,uarq); //(ponteiro que irá armazenar, tamanho máximo da palavra, arquivo destino)
