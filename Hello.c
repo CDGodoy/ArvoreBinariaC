@@ -13,7 +13,7 @@ int main(){
     char buffer [LS][TAM];
     char *resul;
     char no_me[15]; //Nome a ser pesquisado e seu tamanho
-    arq = fopen("texto.txt","r");
+    arq = fopen("hello.txt","r");
     printf("Arquivo txt: ");
     if(arq != NULL){
         for(i=0;i<20;i++){ //Mostra todas as palavras do arquivo

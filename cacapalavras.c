@@ -38,23 +38,78 @@ int main(){
     FILE *arq;
     FILE *uarq;
     FILE *tarq;
-    int i, j, k, tam, tam1;
-    char palavras[nlinhas][MAX];
+    int i, j, k, tam, tam1, l=0, contador = 0, Linha =1;
+    char palavras[MAX][MAX];
     char buffer[nlinhas][MAX];
-    char *resul;
+    char resul[nlinhas];
     char dicpalavra[MAX];
-
+    char ch;
+    int qt=0;
     tarq = fopen("meutexto.txt", "w");
     uarq = fopen(pesq, "r");
+    if (uarq == NULL){
+        printf("Erro ao abrir o arquivo");
+        return(0);
+    }
     arq = fopen("dic.txt", "r");
 
     while (!feof(arq)){
         fgets(dicpalavra, MAX, arq);
+        dicpalavra[strlen(dicpalavra)-1] = dicpalavra[strlen(dicpalavra)]; //Retira o \0 do fgets
         tam = strlen(dicpalavra);
         for (i=0; i<tam; i++){ //Convertendo palavras do dic em CapsLock
             dicpalavra[i] = toupper(dicpalavra[i]); 
         }
-        fputs(dicpalavra, tarq); //Escrevendo em outro arquivo com tudo em maiúsculo
+        qt = 0;
+        //printf("%s", dicpalavra);        
+        //dicpalavra é a palavra a ser pesquisada no texto
+
+        while(fscanf(uarq, "%s",palavras[contador]) != EOF || fscanf(uarq,"%c",&ch)!=EOF){
+            if(ch=='\n')Linha++;
+            tam1 = strlen(palavras[contador]);
+            for (i=0; i<tam1; i++){ //Convertendo palavras do dic em CapsLock
+                palavras[contador][i] = toupper(palavras[contador][i]); 
+            }
+            if (strcmp(palavras[contador],dicpalavra)==0){
+                qt++;
+                printf("A palavra %s está no texto\n", palavras[contador]);
+            }else
+                contador++;
+        }
+        printf("A palavra %s foi encontrada %d no texto\n", dicpalavra,qt);
+
+
+        // while (!feof(uarq)){
+        //     for (i=0; i<nlinhas; i++){
+ 
+        //         fgets(*buffer, MAX, uarq);
+        //         strcpy(palavras[i], *buffer);
+        //         tam1 = strlen(palavras[i]);
+        //         for (j=0; j<tam1; j++){
+        //             palavras[i][j] = toupper(palavras[i][j]);
+                    
+        //         }
+
+
+
+        //         // printf("dicpalavra = %s", dicpalavra);
+        //         // printf("\npalavras[i] %s", palavras[i]);
+        //         // if (strstr(palavras[i],dicpalavra)){
+        //         //     printf("----------verdadeiro-------------\n");
+        //         //     l++;
+
+        //         //     //fprintf(tarq,"%s %d\n",dicpalavra,l);
+        //         // }
+        //         //printf("%s", palavras[i]);
+                
+        //     }
+            
+        //     //printf("%s", buffer);
+
+        // }
+
+        //fputs(dicpalavra, tarq); //Escrevendo em outro arquivo com tudo em maiúsculo
+        
     }
         //     for(i=0;i<nlinhas;i++){ //Mostra todas as palavras do arquivo
         //     resul = fgets(*buffer,MAX,uarq); //(ponteiro que irá armazenar, tamanho máximo da palavra, arquivo destino)
@@ -74,4 +129,8 @@ int main(){
 
         // }
 
+
+    fclose(arq);
+    fclose(uarq);
+    fclose(tarq);
 }
