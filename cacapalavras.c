@@ -63,8 +63,12 @@ int main(){
         qt = 0;
         //printf("%s", dicpalavra);        
         //dicpalavra é a palavra a ser pesquisada no texto
-
-        while(fscanf(uarq, "%s",palavras[contador]) != EOF || fscanf(uarq,"%c",&ch)!=EOF){
+        uarq = fopen(pesq, "r");
+        if (uarq == NULL){
+        printf("Erro ao abrir o arquivo");
+        return(0);
+    }
+        while(fscanf(uarq, "%s",palavras[contador]) != EOF && fscanf(uarq,"%c",&ch)!=EOF){
             if(ch=='\n')Linha++;
             tam1 = strlen(palavras[contador]);
             for (i=0; i<tam1; i++){ //Convertendo palavras do dic em CapsLock
@@ -76,6 +80,7 @@ int main(){
             }else
                 contador++;
         }
+        fclose(uarq);
         printf("A palavra %s foi encontrada %d no texto\n", dicpalavra,qt);
 
 
