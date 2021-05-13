@@ -1,16 +1,23 @@
+//Arquivo ArvoreAVL.h
+typedef struct NO* ArvAVL;
+
+//Arquivo ArvoreAVL.c
 #include<stdio.h>
 #include<stdlib.h>
-#include "Avl.h"
+#include "Avl.h" //Inclui os protótipos
 
 struct NO{
     int info;
-    int altura;
+    int altura; //Altura daquela sub-árvore
     struct NO *esq;
     struct NO *dir;
 };
 
+//Programa principal
 ArvAVL* raiz;
 
+//Funções auxiliares
+//Calcula a altura de um nó
 int alt_NO(struct NO* no){
     if(no==NULL)
         return -1;
@@ -18,10 +25,12 @@ int alt_NO(struct NO* no){
         return no->altura;
 }
 
+//Calcula o fator de balanceamento de um nó
 int fatorBalanceamento_NO(struct NO* no){
     return labs(alt_NO(no->esq) - alt_NO(no->dir));
 }
 
+//Calcula o maior valor
 int maior(int x, int y){
     if(x>y)
         return x;
@@ -65,9 +74,10 @@ void RotacaoRL(ArvAVL *raiz){
     RotacaoRR(raiz);
 }
 
+//Arquivo Avl.c
 int insere_ArvAVL(ArvAVL *raiz, int valor){
     int res;
-    if(*raiz == NULL){
+    if(*raiz == NULL){ //Árvore vazia ou nó folha
         struct NO *novo;
         novo = (struct NO*)malloc(sizeof(struct NO));
         if (novo == NULL)
@@ -112,6 +122,8 @@ int insere_ArvAVL(ArvAVL *raiz, int valor){
     return res;
 }
 
+//Arquivo Avl.h
+//Função responsável pela busca do nó a ser removido
 int remove_ArvAVL(ArvAVL *raiz, int valor){
 
     if(*raiz == NULL){
@@ -127,7 +139,7 @@ int remove_ArvAVL(ArvAVL *raiz, int valor){
                 RotacaoRR(raiz);
             else
                 RotacaoRL(raiz);
-           } 
+           }
         }
     }
     if ((*raiz)->info < valor){
@@ -138,7 +150,7 @@ int remove_ArvAVL(ArvAVL *raiz, int valor){
                     RotacaoLL(raiz);
                 else
                     RotacaoLR(raiz);
-           } 
+           }
         }
     }
     if ((*raiz)->info == valor){
@@ -166,6 +178,7 @@ int remove_ArvAVL(ArvAVL *raiz, int valor){
     return res;
 }
 
+//Função responsável por tratar a remoção de um nó com 2 filhos
 struct NO* procuraMenor(struct NO* atual){
     struct NO *no1 = atual;
     struct NO *no2 = atual->esq;
