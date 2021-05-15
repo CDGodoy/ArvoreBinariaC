@@ -33,7 +33,7 @@ void lerCSV(){
 
 
 void cabecalho(){
-    system("clear");
+    //system("clear");
     printf("\n=======ARVORE BINÁRIA DE BUSCA==========");
 }
 void menuPrincipal(){
@@ -48,6 +48,7 @@ struct NO{
     int Chave; 
     struct NO *pEsq, *pDir;
     int FatBal;
+    int altura;
 };
 
 //Cria a árvore caso não exista, para isso, 
@@ -140,6 +141,18 @@ void arvCrescente(ArvBin *raiz){
     }
 }
 
+void percBalanceamento(ArvBin *raiz){
+    if(raiz == NULL){
+        return;
+    }
+    if(*raiz != NULL){
+        percBalanceamento(&((*raiz)->pEsq));
+        balanceamento(&((*raiz)));
+        percBalanceamento(&((*raiz)->pDir));
+        
+    }
+}
+
 //Insere os elementos da árvore sem recursão
 int insereArv(ArvBin *raiz, int valor){
     if(raiz == NULL){
@@ -181,4 +194,17 @@ int insereArv(ArvBin *raiz, int valor){
         }    
     }
     return 1;
+}
+
+int balanceamento(struct NO *no){
+    return (alturaNO(no->pDir) - alturaNO(no->pEsq));
+}
+
+int alturaNO(struct NO* no){
+    if(no=NULL){
+        return -1;
+    }else{
+        return no->altura;
+    }
+    
 }

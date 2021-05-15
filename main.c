@@ -5,8 +5,8 @@
 
 int main(){
 
-    int esc;
-    ArvBin* raiz;
+    int esc, valor, y;
+    ArvBin* raiz = criaABP();
     do{
 
         cabecalho();
@@ -15,19 +15,22 @@ int main(){
         getchar();
         switch (esc){
             case 1:
-                lerCSV();
+                printf("Insira o valor a ser colocado na arvore: ");
+                scanf("%d", &valor);
+                int x = insereArv(raiz, valor);
                 break;
             case 2:
-
+                
+                y = balanceamento(raiz);
                 break;
             case 3:
-
+                arvCrescente(raiz);
                 break;
             case 4:
+                liberaABP(raiz);
                 return 0;
                 break;
         }
-        
 
     }while(1);
 
