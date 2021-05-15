@@ -25,6 +25,8 @@ int main(){
                 break;
             case 3:
                 arvCrescente(raiz);
+                printf("\nPressione qualquer tecla para limpar a tela e continuar.");
+                getchar();
                 break;
             case 4:
                 liberaABP(raiz);
