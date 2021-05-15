@@ -13,5 +13,9 @@ int totalDeNos(ArvBin *raiz);
 void arvCrescente(ArvBin *raiz);
 int insereArv(ArvBin *raiz, int valor);
 void lerCSV();
+
+//int alturaNO(struct NO* no);
+//void percBalanceamento(ArvBin *raiz);
+int fatorBalanceamento (struct NO *no);
 #endif
 
