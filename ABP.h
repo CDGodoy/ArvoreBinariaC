@@ -1,21 +1,19 @@
 #ifndef ABP_H_INCLUDED
 #define ABP_H_INCLUDED
 
-void cabecalho();
-void menuPrincipal();
 typedef struct NO* ArvBin;
 ArvBin* criaABP();
-void liberaABP(ArvBin *raiz);
+void cabecalho();
+void menuPrincipal();
+void lerCSV(ArvBin *raiz);
 void liberaNo(struct NO* no);
-int verificaArv(ArvBin *raiz);
-int alturaArv(ArvBin *raiz);
-int totalDeNos(ArvBin *raiz);
+void liberaABP(ArvBin *raiz);
 void arvCrescente(ArvBin *raiz);
+void percorreBalanceamento(ArvBin *raiz, struct NO *no);
 int insereArv(ArvBin *raiz, int valor);
-void lerCSV();
-
-//int alturaNO(struct NO* no);
-//void percBalanceamento(ArvBin *raiz);
 int fatorBalanceamento (struct NO *no);
+int altura(struct NO* no);
+void printFatorBalanceamento(struct NO* no);
+
 #endif
 
