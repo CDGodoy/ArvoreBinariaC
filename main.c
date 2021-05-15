@@ -16,12 +16,16 @@ int main(){
         getchar();
         switch (esc){
             case 1:
-                printf("Insira o valor a ser colocado na arvore: ");
-                scanf("%d", &valor);
-                int x = insereArv(raiz, valor);
+                lerCSV(raiz);
+                // printf("Insira o valor a ser colocado na arvore: ");
+                // scanf("%d", &valor);
+                // int x = insereArv(raiz, valor);
                 break;
             case 2:
                 percorreBalanceamento(raiz, *raiz);
+                printf("\nFator de balanceamento calculado com sucesso!");
+                printf("\nPressione qualquer tecla para continuar.");
+                getchar();
                 break;
             case 3:
                 arvCrescente(raiz);

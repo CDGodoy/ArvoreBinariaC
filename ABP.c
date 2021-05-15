@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 #include "ABP.h"
 
 
@@ -23,29 +25,34 @@ ArvBin* criaABP(){
 }
 
 
-void lerCSV(){
-    FILE* arquivo;
-    char arqCSV[100];
-    cabecalho();
-    printf("\nInsira o nome do arquivo CSV a ser lido: ");
-    scanf("%s", arqCSV);
+void lerCSV(ArvBin *raiz){
 
-    arquivo = fopen(arqCSV, "r");
-    getchar();
+    int x;
+    cabecalho();
+    char narq[100];
+    printf("\nInsira o nome do arquivo CSV a ser lido: ");
+    scanf("%s", &narq);
+
+    FILE *arquivo;
+
+    arquivo = fopen(narq,"r");
+    char texto[10000];
+    fgets(texto, 10000, arquivo);
 
     if(arquivo == NULL){
-        printf("Erro, arquivo não foi aberto");
+        printf("\nErro, arquivo não foi aberto");
     }else{
-        printf("Arquivo aberto com sucesso!");
+        printf("\nArquivo aberto com sucesso!");
     }
 
-    char *token;
-    const char s[2] = ",";
-    
-    //token = strtok(arquivo, s);
+    int tam = strlen(texto);
+    char *token = strtok(texto, ", ");
+    for (int i = 0; i < tam; i++)token[i] == 0 ? "\\0" : "%c";
 
     while(token != NULL){
-        printf("%s\n", token);
+        int valor = atoi(token);
+        x = insereArv(raiz, valor);
+        token = strtok(NULL, ",");
     }
 
     fclose(arquivo);
@@ -123,9 +130,7 @@ void percorreBalanceamento(ArvBin *raiz, struct NO *no){
         no->FatBal = fatorBalanceamento(*raiz);
         percorreBalanceamento(&((*raiz)->pDir), no);
     }
-    printf("\nFator de balanceamento calculado com sucesso!");
-    printf("\nPressione qualquer tecla para continuar.");
-    getchar();
+
 }
 
 //Insere os elementos da árvore sem recursão
