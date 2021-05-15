@@ -3,6 +3,26 @@
 #include "ABP.h"
 
 
+
+struct NO{
+    int Chave; 
+    struct NO *pEsq, *pDir;
+    int FatBal;
+    int altura;
+    void *v;
+};
+
+//Cria a árvore caso não exista, para isso, 
+//se cria a raiz da árvore apontando para NULL
+ArvBin* criaABP(){
+    ArvBin* raiz = (ArvBin*) malloc(sizeof(ArvBin));
+    if(raiz != NULL){
+        *raiz = NULL;
+    }
+    return raiz;
+}
+
+
 void lerCSV(){
     FILE* arquivo;
     char arqCSV[100];
@@ -31,7 +51,6 @@ void lerCSV(){
     fclose(arquivo);
 }
 
-
 void cabecalho(){
     //system("clear");
     printf("\n=======ARVORE BINÁRIA DE BUSCA==========");
@@ -42,23 +61,6 @@ void menuPrincipal(){
     printf("\n2 - CALCULAR FATOR DE BALANCEAMENTO DA ABP");
     printf("\n3 - MOSTRAR ABP");
     printf("\n4 - SAIR\n");
-}
-
-struct NO{
-    int Chave; 
-    struct NO *pEsq, *pDir;
-    int FatBal;
-    int altura;
-};
-
-//Cria a árvore caso não exista, para isso, 
-//se cria a raiz da árvore apontando para NULL
-ArvBin* criaABP(){
-    ArvBin* raiz = (ArvBin*) malloc(sizeof(ArvBin));
-    if(raiz != NULL){
-        *raiz = NULL;
-    }
-    return raiz;
 }
 
 //Percorre a árvore de forma recursiva liberando 
@@ -136,21 +138,22 @@ void arvCrescente(ArvBin *raiz){
     }
     if(*raiz != NULL){
         arvCrescente(&((*raiz)->pEsq));
-        printf("\n%d", (*raiz)->Chave);
+        printf("\nChave: %d", (*raiz)->Chave);
+        printFatorBalanceamento(*raiz);
         arvCrescente(&((*raiz)->pDir));
     }
 }
 
-void percBalanceamento(ArvBin *raiz){
+void percorreBalanceamento(ArvBin *raiz, struct NO *no){
     if(raiz == NULL){
         return;
     }
     if(*raiz != NULL){
-        percBalanceamento(&((*raiz)->pEsq));
-        balanceamento(&((*raiz)));
-        percBalanceamento(&((*raiz)->pDir));
-        
+        percorreBalanceamento(&((*raiz)->pEsq), no);
+        no->FatBal = fatorBalanceamento(*raiz);
+        percorreBalanceamento(&((*raiz)->pDir), no);
     }
+
 }
 
 //Insere os elementos da árvore sem recursão
@@ -196,15 +199,69 @@ int insereArv(ArvBin *raiz, int valor){
     return 1;
 }
 
-int balanceamento(struct NO *no){
-    return (alturaNO(no->pDir) - alturaNO(no->pEsq));
+
+int fatorBalanceamento (struct NO *no){
+  int esquerda = 0;
+  int direita = 0;
+
+  if (no->pDir != NULL) {
+    direita = altura(no->pDir)+1;
+  }
+
+  if (no->pEsq != NULL) {
+    esquerda = altura(no->pEsq)+1;
+  }
+
+  return esquerda - direita;
+}
+int altura(struct NO* no) {
+  int contDireita = 0, contEsquerda = 0;
+
+  if (no != NULL) {
+    if(no->pEsq != NULL){
+      contEsquerda = altura(no->pEsq) + 1;
+
+    }
+    if(no->pDir != NULL){
+      contDireita = altura(no->pDir) + 1;
+    }
+  }
+
+  if(contEsquerda > contDireita){
+    return contEsquerda;
+  }
+  else{
+    return contDireita;
+  }
+  
 }
 
-int alturaNO(struct NO* no){
-    if(no=NULL){
-        return -1;
-    }else{
-        return no->altura;
-    }
-    
+void printFatorBalanceamento(struct NO* no){
+  int fator;
+  fator = fatorBalanceamento(no);
+  printf("\nFator de Balanceamento: %d", fator);
 }
+
+//no ->FatBal = calculado
+
+// void balanceamento(struct NO *no){
+
+//     if (no != NULL){
+//         int fator = 
+//     }
+
+//     return 0;
+// }
+
+
+// int balanceamento(struct NO *no){
+//     return (alturaNO(no->pDir) - alturaNO(no->pEsq));
+// }
+
+// int alturaNO(struct NO *no){
+//     if(no=NULL){
+//         return -1;
+//     }else{
+//         return no->altura;
+//     }  
+// }

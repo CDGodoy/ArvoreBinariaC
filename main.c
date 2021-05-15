@@ -7,6 +7,7 @@ int main(){
 
     int esc, valor, y;
     ArvBin* raiz = criaABP();
+
     do{
 
         cabecalho();
@@ -20,8 +21,7 @@ int main(){
                 int x = insereArv(raiz, valor);
                 break;
             case 2:
-                
-                y = balanceamento(raiz);
+                percorreBalanceamento(raiz, *raiz);
                 break;
             case 3:
                 arvCrescente(raiz);
