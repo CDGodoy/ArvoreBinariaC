@@ -24,6 +24,18 @@ ArvBin* criaABP(){
     return raiz;
 }
 
+void cabecalho(){
+    system("clear");
+    printf("\n=======ARVORE BINÁRIA DE BUSCA==========");
+}
+
+void menuPrincipal(){
+    printf("\nSELECIONE A OPCAO DESEJADA:");
+    printf("\n1 - GERAR ABP A PARTIR DE UM ARQUIVO");
+    printf("\n2 - CALCULAR FATOR DE BALANCEAMENTO DA ABP");
+    printf("\n3 - MOSTRAR ABP");
+    printf("\n4 - SAIR\n");
+}
 
 void lerCSV(ArvBin *raiz){
 
@@ -56,19 +68,6 @@ void lerCSV(ArvBin *raiz){
     }
 
     fclose(arquivo);
-}
-
-void cabecalho(){
-    system("clear");
-    printf("\n=======ARVORE BINÁRIA DE BUSCA==========");
-}
-
-void menuPrincipal(){
-    printf("\nSELECIONE A OPCAO DESEJADA:");
-    printf("\n1 - GERAR ABP A PARTIR DE UM ARQUIVO");
-    printf("\n2 - CALCULAR FATOR DE BALANCEAMENTO DA ABP");
-    printf("\n3 - MOSTRAR ABP");
-    printf("\n4 - SAIR\n");
 }
 
 //Percorre a árvore de forma recursiva liberando 
