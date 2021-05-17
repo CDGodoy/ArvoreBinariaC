@@ -7,7 +7,7 @@
   <a href="#Autores">Autores</a>
   <a href="#Funcionalidades">Funcionalidades</a>
   <a href="#Status Do Projeto">Status do projeto</a>
-  <a href="Como usar">Como usar</a>
+  <a href="#Como usar">Como usar</a>
 </p>
 
 ## Objetivo
@@ -33,7 +33,7 @@
 ## Status do projeto
 :checkered_flag: FINALIZADO :checkered_flag:
 ## Como usar
-:white_check_mark: Garanta que tenha um compilador de C em sua máquina
-:white_check_mark: Compile o arquivo <b>main.c</b>
-:white_check_mark: Tenha um arquivo csv com o conteúdo no formato: <i>inteiro</i>, <i>inteiro</i>, <i>inteiro</i>...
- :white_check_mark: Siga as instruções de dentro do programa. Passe por todos os menus em ordem crescente para evitar bugs
+:white_check_mark: Garanta que tenha um compilador de C em sua máquina<br>
+:white_check_mark: Compile o arquivo <b>main.c</b><br>
+:white_check_mark: Tenha um arquivo csv com o conteúdo no formato: <i>inteiro</i>, <i>inteiro</i>, <i>inteiro</i>...<br>
+ :white_check_mark: Siga as instruções de dentro do programa. Passe por todos os menus em ordem crescente para evitar bugs<br>
