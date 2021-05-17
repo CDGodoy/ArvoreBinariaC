@@ -15,72 +15,9 @@
 <br>
 #Autores
 <br>
-<table align="center">
-    <tr>
-        <th>
-            Nome
-        </th>
-        <th>
-            Github
-        </th>
-        <th>
-            Matrícula
-        </th>
-    </tr>
+| Nome | GitHub | Matrícula |
+| :----: | :------: | :---------: |
+| Carlos Daniel Godoy | CDGodoy | 19/0042303 |
+| José Luís Ramos Teixeira | joseluis-rt | 19/0057858 |
 
-    <tr>
-        <td>
-            Carlos Daniel Godoy
-        </td>
-        <td>
-            <a href="github.com/CDGodoy/">CDGodoy</a>
-        </td>
-        <td>
-            19/0042303
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Nome
-        </td>
-        <td>
-            Github
-        </td>
-        <td>
-            Matrícula
-        </td>
-    </tr> 
-    <tr>
-        <td>
-            Nome
-        </td>
-        <td>
-            Github
-        </td>
-        <td>
-            Matrícula
-        </td>
-    </tr> 
-    <tr>
-        <td>
-            Nome
-        </td>
-        <td>
-            Github
-        </td>
-        <td>
-            Matrícula
-        </td>
-    </tr> 
-    <tr>
-        <td>
-            Nome
-        </td>
-        <td>
-            Github
-        </td>
-        <td>
-            Matrícula
-        </td>
-    </tr>    
-</table>
+#Funcionalidades
