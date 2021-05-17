@@ -18,8 +18,11 @@
 
 | Nome | GitHub | Matrícula |
 | :---: | :---: | :---: |
-| Carlos Daniel Godoy  | CDGodoy | 19/0042303 |
+| Carlos Daniel de Godoy Barros Nascimento  | CDGodoy | 19/0042303 |
 | José Luís Ramos Teixeira  | joseluis-rt | 19/0057858 |
+| Lucas Rodrigues Cardoso  | lucascard | 20/0059211 |
+| Pedro Henrique Nogueira Bragança  | pehenobra2 | 19/0094478 |
+| Samuel Victor Oliveira Lima  | samvctr | 19/0059001 |
 
 
 ## Funcionalidades
